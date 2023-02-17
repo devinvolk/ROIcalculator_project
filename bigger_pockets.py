@@ -11,12 +11,12 @@ class FourSquareMethod():
             if confirmation == 'quit' or confirmation == 'q':
                 break
             elif confirmation == 'yes':
-                self.properties[answer1] = {'Totale Monthly Income': 1, 'Income': {'Rental Income': 1, 'Laundry': 1,
-                 'Storage': 1, 'Misc': 1}, 
-                 'Total Monthly Income': 1, 'Expenses': {'Taxes': 1, 'Insurance': 1, 'Utilities': 1,
-                  'HOA Fees': 1, 'Yead Work': 1, 'Vacancy': 1, 'Maintanence': 1, 'Capitol Expenditures': 1,
-                   'Property Management': 1,'Mortage': 1}, 'Cash On Cash Return': {'Down Payment': 1,
-                    'Closing Costs': 1, 'Repair Costs': 1, 'Misc': 1}, 'Annual Cash Flow': 1, 'ROI': 1}
+                self.properties[answer1] = {'Totale Monthly Income': 0, 'Income': {'Rental Income': 0, 'Laundry': 0,
+                 'Storage': 0, 'Misc': 0}, 
+                 'Total Monthly Income': 0, 'Expenses': {'Taxes': 0, 'Insurance': 0, 'Utilities': 0,
+                  'HOA Fees': 0, 'Yead Work': 0, 'Vacancy': 0, 'Maintanence': 0, 'Capitol Expenditures': 0,
+                   'Property Management': 0,'Mortage': 0}, 'Cash On Cash Return': {'Down Payment': 0,
+                    'Closing Costs': 0, 'Repair Costs': 0, 'Misc': 0}, 'Annual Cash Flow': 0, 'ROI': 0}
                 print(f'Property {answer1.title()} was added')
                 answer2 = input("Would you like to add another propety? <yes or no> ").lower()
                 if answer2 == 'quit' or answer2 == 'q':
@@ -76,7 +76,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Income'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name]["Income"][answer2.title()]}')
                     answer4 = input("Would you like to update another income catagory? <yes or no> ").lower()
@@ -91,13 +91,13 @@ class FourSquareMethod():
                         continue
             elif answer2 == 'laundry':
                 print(f'{self.name.title()}\'s propteries {answer2.title()} amount is currently\
-                        ${self.properties[self.name]["Income"][answer2.title()]}')
+ ${self.properties[self.name]["Income"][answer2.title()]}')
                 try:
                     answer3 = float(input(f"What would like like to set the {answer2.title()} to? "))
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Income'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name]["Income"][answer2.title()]}')
                     answer4 = input("Would you like to update another income catagory? <yes or no> ").lower()
@@ -118,7 +118,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Income'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name]["Income"][answer2.title()]}')
                     answer4 = input("Would you like to update another income catagory? <yes or no> ").lower()
@@ -139,7 +139,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Income'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name]["Income"][answer2.title()]}')
                     answer4 = input("Would you like to update another income catagory? <yes or no> ").lower()
@@ -155,8 +155,8 @@ class FourSquareMethod():
             else:
                 print("Your response was not recognized. Please try again")
                 continue
-        for value in self.properties[self.name]['Income'].values():
-            self.properties['Total Monthly Income'] += value
+        for amount in self.properties[self.name]['Income'].values():
+            self.properties[self.name]['Total Monthly Income'] += amount
         print(f'Your new Total Monthly Income for {self.name.title()} is\
  ${self.properties[self.name]["Total Monthly Income"]}')
 
@@ -175,7 +175,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses']['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -196,7 +196,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -217,7 +217,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -238,7 +238,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -259,7 +259,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -280,7 +280,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -301,7 +301,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -322,7 +322,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -343,7 +343,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -364,7 +364,7 @@ class FourSquareMethod():
                 except ValueError:
                     print('Please enter a number.')
                 else:
-                    self.properties[self.name][answer2.title()] = answer3
+                    self.properties[self.name]['Expenses'][answer2.title()] = answer3
                     print(f'Your new {answer2.title()} for {self.name.title()} is\
  ${self.properties[self.name][answer2.title()]}')
                     answer4 = input("Would you like to update another expenses catagory? <yes or no> ").lower()
@@ -379,8 +379,8 @@ class FourSquareMethod():
                         continue
             else:
                 print("Your response was not recognized. Please try again")
-        for value in self.properties[self.name]['Expenses'].values():
-            self.properties['Total Monthly Expenses'] += value
+        for amount in self.properties[self.name]['Expenses'].values():
+            self.properties['Total Monthly Expenses'] += amount
         print(f'Your new Total Monthly Expenses for {self.name.title()} are\
  ${self.properties[self.name]["Total Monthly Expenses"]}')
 
