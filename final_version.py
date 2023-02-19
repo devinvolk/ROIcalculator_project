@@ -14,8 +14,8 @@ class FourSquareMethod():
                 self.properties[answer1.title()] = {'Total Monthly Income': 0, 'Income': {'Rental Income': 0, 'Laundry': 0,
                  'Storage': 0, 'Misc': 0}, 
                  'Total Monthly Expenses': 0, 'Expenses': {'Taxes': 0, 'Insurance': 0, 'Utilities': 0,
-                  'HOA Fees': 0, 'Yead Work': 0, 'Vacancy': 0, 'Maintanence': 0, 'Capitol Expenditures': 0,
-                   'Property Management': 0,'Mortage': 0}, 'Cash On Cash Return': {'Down Payment': 0,
+                  'HOA Fees': 0, 'Yard Work': 0, 'Vacancy': 0, 'Maintanence': 0, 'Capital Expenditures': 0,
+                   'Property Management': 0,'Mortgage': 0}, 'Cash On Cash Return': {'Down Payment': 0,
                     'Closing Costs': 0, 'Repair Costs': 0, 'Misc': 0}, 'Annual Cash Flow': 0, 'Total Investment': 0, 'ROI': 0}
                 print(f'Property {answer1.title()} was added')
                 answer2 = input("Would you like to add another property? <yes or no> ").lower()
@@ -27,6 +27,7 @@ class FourSquareMethod():
                     break
                 else:
                     print("Your response was not recognized. Please try again")
+                    continue
             elif confirmation == 'no':
                     print(f'Property {answer1.title()} was not added')
                     continue
@@ -55,6 +56,7 @@ class FourSquareMethod():
                     break
                 else:
                     print("Your response was not recognized")
+                    continue
             elif confirmation == 'no':
                 print(f'Property {answer1} was not deleted')
                 continue
@@ -62,7 +64,7 @@ class FourSquareMethod():
                 print("Your response was not recognized")
 
     def propIncome(self):
-        #Updates the dicitonary monthly income for the property and calculates total monthy income for that property
+        #Updates the dicitonary values for monthly income for the property and calculates total monthy income for that property
         while True:
             print(self.properties[self.name]['Income'])
             answer2 = input("Which property income catagory would you like to update? ").lower()
@@ -98,7 +100,7 @@ class FourSquareMethod():
  ${self.properties[self.name]["Total Monthly Income"]}')
 
     def propExpenses(self):
-        #Calculates the total monthly expenses and sets the value in the dicitonary
+        #Updates the dicitonary values for monthly expenses for the property and calculates total monthy expenses for that property
         print(f'Your Total Monthly Expenses for {self.name.title()} are\
  ${self.properties[self.name]["Total Monthly Expenses"]}')
         while True:
