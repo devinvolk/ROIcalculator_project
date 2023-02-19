@@ -191,22 +191,24 @@ class FourSquareMethod():
                     if answer == 'quit' or answer == 'q':
                         break
                     elif answer.title() in self.properties.keys():
-                        print(self.properties[answer.title()])
+                        print(f'Total Monthly Income: ${self.properties[answer.title()]["Total Monthly Income"]}', f'\nTotal Monthly Expenses: ${self.properties[answer.title()]["Total Monthly Expenses"]}',
+                        f'\nAnnual Cash Flow: ${self.properties[answer.title()]["Annual Cash Flow"]}', f'\nTotal Investment: ${self.properties[answer.title()]["Total Investment"]}', f'\nROI: ${self.properties[answer.title()]["ROI"]}')
                         self.name = answer.title()
-                        answer1 = input("What would you like to do? Enter: <update property income, update property expenses,\
+                        while True:
+                            answer1 = input("What would you like to do? Enter: <update property income, update property expenses,\
  view property cash flow, or update cash on cash return> ").lower()
-                        if answer1 == 'quit' or answer1 == 'q':
-                            break
-                        elif answer1 == 'update property income':
-                            self.propIncome()
-                        elif answer1 == 'update property expenses':
-                            self.propExpenses()
-                        elif answer1 == 'view property cash flow':
-                            self.propCashFlow()
-                        elif answer1 == 'update cash on cash return':
-                            self.propCashOnCashReturn()
-                        else:
-                            print("Your input was not recognized. Please try again")
+                            if answer1 == 'quit' or answer1 == 'q':
+                                break
+                            elif answer1 == 'update property income':
+                                self.propIncome()
+                            elif answer1 == 'update property expenses':
+                                self.propExpenses()
+                            elif answer1 == 'view property cash flow':
+                                self.propCashFlow()
+                            elif answer1 == 'update cash on cash return':
+                                self.propCashOnCashReturn()
+                            else:
+                                print("Your input was not recognized. Please try again")
                     else:
                         print("Your input was not recognized. Please try again")
             elif answer == 'remove a property':
