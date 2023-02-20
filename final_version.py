@@ -45,24 +45,28 @@ class FourSquareMethod():
             answer1 = input("Which property would you like to delete? ").lower()
             if answer1 == 'quit' or answer1 == 'q':
                 break
-            confirmation = input(f'Are you sure you want to delete {answer1}? <yes or no> ').lower()
+            confirmation = input(f'Are you sure you want to delete {answer1.title()}? <yes or no> ').lower()
             if confirmation == 'quit' or confirmation == 'q':
                 break
             elif confirmation == 'yes':
-                del self.properties[answer1]
-                print(f'Property {answer1} was deleted')
-                answer2 = input("Would you like to delete another propety? <yes or no> ")
-                if answer2 == 'quit' or answer2 == 'q':
-                    break
-                elif answer2 == 'yes':
-                    continue
-                elif answer2 == 'no':
-                    break
+                try:
+                    del self.properties[answer1.title()]
+                except KeyError:
+                    print(f'Property {answer1.title()} was not found. Please try again.')
                 else:
-                    print("Your response was not recognized")
-                    continue
+                    print(f'Property {answer1.title()} was deleted')
+                    answer2 = input("Would you like to delete another propety? <yes or no> ")
+                    if answer2 == 'quit' or answer2 == 'q':
+                     break
+                    elif answer2 == 'yes':
+                     continue
+                    elif answer2 == 'no':
+                        break
+                    else:
+                        print("Your response was not recognized")
+                        continue
             elif confirmation == 'no':
-                print(f'Property {answer1} was not deleted')
+                print(f'Property {answer1.title()} was not deleted')
                 continue
             else:
                 print("Your response was not recognized")
@@ -226,7 +230,10 @@ class FourSquareMethod():
                     else:
                         print("Your input was not recognized. Please try again")
             elif answer == 'remove a property':
-                self.removeProp()
+                if self.properties:
+                    self.removeProp()
+                else:
+                    print("Sorry, it doesn't look like you have any existing properties. Please add a property.")
             else:
                 print("Your input was not recognized. Please try again")
 
