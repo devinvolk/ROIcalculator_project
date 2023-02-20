@@ -5,19 +5,22 @@ class FourSquareMethod():
     
     def addProp(self):
         #adds a property to the dictionary with default attributes
+        #checks to see if the property name is available before updating
         while True:
             answer1 = input("What would you like to name this property? ").lower()
             confirmation = input(f'Does property name {answer1.title()} look correct? <yes or no> ').lower()
             if confirmation == 'quit' or confirmation == 'q':
                 break
             elif confirmation == 'yes':
-                self.properties[answer1.title()] = {'Total Monthly Income': 0, 'Income': {'Rental Income': 0, 'Laundry': 0,
-                 'Storage': 0, 'Misc': 0}, 
-                 'Total Monthly Expenses': 0, 'Expenses': {'Taxes': 0, 'Insurance': 0, 'Utilities': 0,
-                  'HOA Fees': 0, 'Yard Work': 0, 'Vacancy': 0, 'Maintanence': 0, 'Capital Expenditures': 0,
-                   'Property Management': 0,'Mortgage': 0}, 'Cash On Cash Return': {'Down Payment': 0,
-                    'Closing Costs': 0, 'Repair Costs': 0, 'Misc': 0}, 'Annual Cash Flow': 0, 'Total Investment': 0, 'ROI': 0}
-                print(f'Property {answer1.title()} was added')
+                if answer1.title() in self.properties.keys():
+                    print(f'Sorry, {answer1.title()} is already an existing property')
+                else:   
+                    self.properties[answer1.title()] = {'Total Monthly Income': 0, 'Income': {'Rental Income': 0, 'Laundry': 0,
+                    'Storage': 0, 'Misc': 0}, 'Total Monthly Expenses': 0, 'Expenses': {'Taxes': 0, 'Insurance': 0, 'Utilities': 0,
+                      'HOA Fees': 0, 'Yard Work': 0, 'Vacancy': 0, 'Maintanence': 0, 'Capital Expenditures': 0,
+                       'Property Management': 0,'Mortgage': 0}, 'Cash On Cash Return': {'Down Payment': 0,
+                        'Closing Costs': 0, 'Repair Costs': 0, 'Misc': 0}, 'Annual Cash Flow': 0, 'Total Investment': 0, 'ROI': 0}
+                    print(f'Property {answer1.title()} was added')
                 answer2 = input("Would you like to add another property? <yes or no> ").lower()
                 if answer2 == 'quit' or answer2 == 'q':
                     break
