@@ -2,6 +2,7 @@ class FourSquareMethod():
     def __init__(self):
         self.properties = {} #key = property name, value = dicitonary of income,$ expenses,$ cashflow,$ and ROI,$
         self.name = ""
+        self.annual_cash_flow = 0
     
     def addProp(self):
         #adds a property to the dictionary with default attributes
@@ -142,8 +143,13 @@ class FourSquareMethod():
     def propCashFlow(self):
         #Calculates annual cash flow and sets value in the dicitonary
         cash_flow = 12 * (self.properties[self.name]['Total Monthly Income'] - self.properties[self.name]['Total Monthly Expenses'])
-        print(f'Your {self.name} properties annual cash flow is ${cash_flow}')
         self.properties[self.name]['Annual Cash Flow'] = cash_flow
+
+    def allPropCashFlow(self):
+        #Calculates the total annual cash flow aross all properties
+        for property in self.properties.keys():
+            self.annual_cash_flow += self.properties[property]['Annual Cash Flow']
+        print(f'Your Total Annual Cash Flow is ${self.annual_cash_flow}')
 
     def propCashOnCashReturn(self):
         #Calculates total investment and ROI as a percentage and sets value in the dicitonary
@@ -192,6 +198,7 @@ class FourSquareMethod():
             elif answer == 'see existing properties':
                 while True:
                     print(self.properties.keys())
+                    self.allPropCashFlow()
                     answer = input("What property would you like to view? ").lower()
                     if answer == 'quit' or answer == 'q':
                         break
@@ -200,6 +207,7 @@ class FourSquareMethod():
                         f'\nAnnual Cash Flow: ${self.properties[answer.title()]["Annual Cash Flow"]}', f'\nTotal Investment: ${self.properties[answer.title()]["Total Investment"]}', f'\nROI: ${self.properties[answer.title()]["ROI"]}')
                         self.name = answer.title()
                         while True:
+                            self.propCashFlow()
                             answer1 = input("What would you like to do? Enter: <update property income, update property expenses,\
  view property cash flow, or update cash on cash return> ").lower()
                             if answer1 == 'quit' or answer1 == 'q':
@@ -210,6 +218,7 @@ class FourSquareMethod():
                                 self.propExpenses()
                             elif answer1 == 'view property cash flow':
                                 self.propCashFlow()
+                                print(f'Your {self.name} properties annual cash flow is ${self.properties[self.name]["Annual Cash Flow"]}')
                             elif answer1 == 'update cash on cash return':
                                 self.propCashOnCashReturn()
                             else:
